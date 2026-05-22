@@ -6,8 +6,6 @@ read config.json
 import json
 import os
 
-from pyparsing import line
-
 class ConfigManager:
     def __init__(self, config_path="config.json"):
         self.config_path = config_path
