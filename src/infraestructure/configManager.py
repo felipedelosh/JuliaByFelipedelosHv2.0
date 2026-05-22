@@ -6,11 +6,13 @@ read config.json
 import json
 import os
 
+from pyparsing import line
+
 class ConfigManager:
     def __init__(self, config_path="config.json"):
         self.config_path = config_path
         self._data = {}
-        self._colors = ""
+        self._colors_arr = []
         self.load()
 
     def load(self):
@@ -22,6 +24,8 @@ class ConfigManager:
 
         if os.path.exists("data/colors.txt"):
             with open("data/colors.txt", "r", encoding="utf-8") as f:
-                self._colors = f.read()
+                for i in f.read().split('\n'):
+                    if str(i).strip() != "":
+                        self._colors_arr.append(str(i).strip())
         else:
-            self._colors = "white\nblack"
+            self._colors = ["white", "black"]
