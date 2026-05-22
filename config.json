@@ -1,0 +1,9 @@
+{
+    "title_app": "Mandelbrot:Julia v2.0.0",
+    "env": "DEV",
+    "window_w": 1280,
+    "window_h": 720,
+    "background_color": "black",
+    "main_banner_text": "Welcome to Mandelbrot viewer",
+    "main_footer_text": "FelipedelosH"
+}

@@ -1,0 +1,85 @@
+# Bytecode y archivos compilados
+__pycache__/
+*.py[cod]
+*.so
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv
+.env
+
+# Archivos de distribución / empaquetado
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Archivos de base de datos locales
+*.db
+*.sqlite
+*.sqlite3
+
+# Archivos de logs
+*.log
+
+# Archivos de configuración local (variables de entorno, etc.)
+.env.local
+.env.*.local
+
+# Archivos específicos de IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Archivos de cobertura y reportes de testing
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Archivos de Jupyter Notebook (si usas)
+.ipynb_checkpoints/
+*.ipynb
+
+# Archivos de profiling y rendimiento
+*.prof
+
+# Archivos de entorno de desarrollo local
+*.local
+
+# Thumbnails de sistemas operativos
+Thumbs.db
+
+# Archivos de configuración de pre-commit
+.pre-commit-config.yaml.local
+
+# Archivos de secrets y credenciales (cuidado)
+*.pem
+*.key
+*.crt
+secrets/
+credentials/
