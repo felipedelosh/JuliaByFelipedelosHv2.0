@@ -26,4 +26,4 @@ class ConfigManager:
                     if str(i).strip() != "":
                         self._colors_arr.append(str(i).strip())
         else:
-            self._colors = ["white", "black"]
+            self._colors_arr = ["white", "black"]
