@@ -38,6 +38,7 @@ class Software:
         self.canvas.place(x=0, y=0)
         self.lblBannerProgram.place(x=self._w * 0.45, y=self._h * 0.01)
         # Controls
+        self.canvas.create_rectangle(self._w * 0.01, self._h * 0.05, self._w * 0.19, self._h * 0.45, fill="green")
 
         self.lblInsertScale.place(x=self._w * 0.02, y=self._h * 0.06)
         self.txtScale.place(x=self._w * 0.02, y=self._h * 0.1)
