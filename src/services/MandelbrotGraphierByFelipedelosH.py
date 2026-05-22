@@ -68,34 +68,16 @@ class MandelbrotGraphierByFelipedelosH:
         Mandelbrot is only X(-1.9, 0.5] Y[1, -1] for any ponits converge
         so many ponits divergen
         """
-        if x<-1.9 or x > 0.5:
-            return True
+        empty_regions = [
+            (-1.75, 0.05),
+            (-1.55, 0.18),
+            (-1.35, 0.35),
+            (-1.15, 0.52),
+            (-0.90, 0.70),
+            (-0.60, 0.85),
+            (-0.30, 0.95),
+        ]
 
-        if y < -1.3 or y > 1.3:
-            return True
-
-        if x < -1 and y > 0.6:
-            return True
-
-        if x < -1 and y < -0.6:
-            return True
-
-        if x < -1.5 and y > 0.05:
-            return True
-
-        if x < -1.5 and y < -0.05:
-            return True
-
-        if x < -0.3 and y > 0.7:
-            return True
-
-        if x < -0.3 and y < -0.7:
-            return True
-
-        if x > 0.2 and y > 0.7:
-            return True
-
-        if x > 0.2 and y < -0.7:
-            return True
-        
-        return False
+        for limit_x, limit_y in empty_regions:
+            if x < limit_x and abs(y) > limit_y:
+                return True
