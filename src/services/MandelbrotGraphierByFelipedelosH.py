@@ -51,12 +51,10 @@ class MandelbrotGraphierByFelipedelosH:
         Z = 0
         C = complex(x, y)
 
-        convergence = []
+        convergence = set()
         for _ in range(definition):
             Z = (Z*Z) + C
-
-            if Z not in convergence:
-                convergence.append(Z)
+            convergence.add(Z)
             
         return len(convergence)
 
