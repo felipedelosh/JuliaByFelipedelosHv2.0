@@ -53,7 +53,7 @@ class Software:
         self.sliderZ.place(x=self._w * 0.02, y=self._h * 0.38)
         # END Controls
         self.lblFooterProgram.place(x=self._w * 0.5, y=self._h * 0.95)
-        self.screem.after(0, self._refreshWindow)
+        #self.screem.after(0, self._refreshWindow)
         self.screem.mainloop()
 
     def _refreshWindow(self):
