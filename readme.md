@@ -32,30 +32,30 @@ Julia by loko V2.0 renders the Mandelbrot Set using:
 ## Mathematical Plane Mapping
 
 Transforms screen pixels into points inside the complex plane:
-´´´´
+```
 x = ((i / width) * plane_width) + min_x
 y = ((j / height) * plane_height) + 
-´´´
+```
 
 ## Mathematical Theory
 
 The Mandelbrot Set is generated using the recursive formula:
-´´´
+```
 Z_n = (Z_{n-1} * Z_{n-1}) + C
-´´´
+```
 
 Starting with:
 
-´´´
+```
 Z_0 = 0
-´´´
+```
 
 Z is a complex number
 C is the point being evaluated in the complex plane
 
 ## Project Structure
 
-´´´
+```
 Julia by loko V2.0/
 │
 ├── main.py
@@ -79,13 +79,13 @@ Julia by loko V2.0/
 │   └── assets/
 │
 └── screenshots/
-´´´
+```
 
 ## :play_or_pause_button:How to execute a project
 
-´´´
+```
 python main.py
-´´´
+```
 
 ## :hammer_and_wrench:Tech.
 
