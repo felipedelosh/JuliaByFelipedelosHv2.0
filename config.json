@@ -6,8 +6,9 @@
     "window_h": 720,
     "background_color": "black",
     "paint_axis": true,
-    "internal_plain_size_x_pixels": 420,
-    "internal_plain_size_y_pixels": 230,
+    "internal_plain_size_x_pixels": 640,
+    "internal_plain_size_y_pixels": 480,
+    "internal_pixel_size": 2,
     "main_banner_text": "Welcome to Mandelbrot viewer",
     "main_footer_text": "FelipedelosH"
 }

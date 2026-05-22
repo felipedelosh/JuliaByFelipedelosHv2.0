@@ -11,34 +11,68 @@ class MandelbrotGraphierByFelipedelosH:
     @staticmethod
     def drawMandelbrot(canvas: Canvas, colors, definition, scaleX, scaleY, zoom, config):
         start_time = time.perf_counter()
+
         print("Drawing Mandelbrot...")
         print(f"Definition: {definition} | ScaleX: {scaleX} | ScaleY: {scaleY} | Zoom: {zoom}")
-        canvas.delete("pixels")
-        _x_plain_pixels = config._data.get("internal_plain_size_x_pixels")
-        _y_plain_pixels = config._data.get("internal_plain_size_y_pixels")
-        for i in range(1, _x_plain_pixels):
-            for j in range(1, _y_plain_pixels):
-                x = ((i/_x_plain_pixels)*(3)) - 2 # [-2, 1]
-                y = ((j/_y_plain_pixels)*(3.6)) - 2 # [-2, 1.6]
 
-                #print(f"Calculating convergence for point ({x}, {y})...")
+        canvas.delete("pixels")
+
+        plain_pixels_x = config._data.get("internal_plain_size_x_pixels")
+        plain_pixels_y = config._data.get("internal_plain_size_y_pixels")
+        pixel_size = config._data.get("internal_pixel_size")
+
+        min_x = -2
+        max_x = 1
+
+        min_y = -2
+        max_y = 1.6
+
+        plain_width = max_x - min_x
+        plain_height = max_y - min_y
+
+        for i in range(1, plain_pixels_x):
+            for j in range(1, plain_pixels_y):
+
+                x = min_x + ((i / plain_pixels_x) * plain_width)
+                y = min_y + ((j / plain_pixels_y) * plain_height)
+
+                canvas_x1 = i * pixel_size
+                canvas_y1 = j * pixel_size
+                canvas_x2 = canvas_x1 + pixel_size
+                canvas_y2 = canvas_y1 + pixel_size
+
                 if MandelbrotGraphierByFelipedelosH.excludePoint(x, y):
-                    pass
-                    #canvas.create_rectangle(3+(i*3), 3+(j*3), 6+(i*3), 6+(j*3), fill='gray6', tags='pixels')
-                else:
-                    if x < 0.5:
-                        _levelOfConvergence = MandelbrotGraphierByFelipedelosH.levelOfConvergence(x, y, definition)
-                        #print(f"Point ({x}, {y}) has convergence level: {_levelOfConvergence}")
-                        color_index = int((_levelOfConvergence / definition) * (len(colors) - 1))
-                        pixel_color = colors[color_index]
-                        canvas.create_rectangle(3+(i*3), 3+(j*3), 6+(i*3), 6+(j*3), fill=pixel_color, tags='pixels') 
-        
+                    continue
+
+                if x < 0.5:
+                    level = MandelbrotGraphierByFelipedelosH.levelOfConvergence(
+                        x,
+                        y,
+                        definition
+                    )
+
+                    color_index = int((level / definition) * (len(colors) - 1))
+                    color_index = max(0, min(color_index, len(colors) - 1))
+
+                    pixel_color = colors[color_index]
+
+                    canvas.create_rectangle(
+                        canvas_x1,
+                        canvas_y1,
+                        canvas_x2,
+                        canvas_y2,
+                        fill=pixel_color,
+                        outline=pixel_color,
+                        tags="pixels"
+                    )
+
         end_time = time.perf_counter()
+
         seconds = end_time - start_time
         minutes = seconds / 60
 
-        print(f"Time to calcute it in seconds: {seconds:.4f}")
-        print(f"Time to calcute it in minutes: {minutes:.4f}")
+        print(f"Time to calculate it in seconds: {seconds:.4f}")
+        print(f"Time to calculate it in minutes: {minutes:.4f}")
 
 
     @staticmethod
