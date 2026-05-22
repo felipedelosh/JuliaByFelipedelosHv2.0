@@ -6,29 +6,100 @@
 <br>
 :construction: IN CONSTRUCTION :construction:
 <br><br>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+A modern refactor of my first Mandelbrot and Julia Set renderer written in Python using Tkinter.
+
+This project started years ago as an experimental mathematical visualization software and is now being rebuilt with a cleaner architecture, modular design, configurable rendering system, and scalable fractal engine.
+
+## Preview
+
+Julia by loko V2.0 renders the Mandelbrot Set using:
+- Complex numbers
+- Tkinter Canvas rendering
+- Dynamic convergence coloring
+- Mathematical plane mapping
+- Manual optimization regions
+
 
 ## :hammer:Funtions:
 
-- `Function 1`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
-- `Function 2`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
-- `Function 3`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
-- `Function 3a`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
-- `Function 4`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
+- `Function 1`: Fractal geometry.<br>
+- `Function 2`: Complex plane mathematics.<br>
+- `Function 3`: Rendering optimization.<br>
+- `Function 4`: Mathematical visualization.<br>
+- `Function 5`: Python desktop applications.<br>
 
+
+## Mathematical Plane Mapping
+
+Transforms screen pixels into points inside the complex plane:
+´´´´
+x = ((i / width) * plane_width) + min_x
+y = ((j / height) * plane_height) + 
+´´´
+
+## Mathematical Theory
+
+The Mandelbrot Set is generated using the recursive formula:
+´´´
+Z_n = (Z_{n-1} * Z_{n-1}) + C
+´´´
+
+Starting with:
+
+´´´
+Z_0 = 0
+´´´
+
+Z is a complex number
+C is the point being evaluated in the complex plane
+
+## Project Structure
+
+´´´
+Julia by loko V2.0/
+│
+├── main.py
+├── README.md
+├── requirements.txt
+│
+├── src/
+│   ├── controllers/
+│   │   └── controller.py
+│   │
+│   ├── graphiers/
+│   │   └── MandelbrotGraphierByFelipedelosH.py
+│   │
+│   ├── managers/
+│   │   └── ConfigManager.py
+│   │
+│   ├── config/
+│   │   ├── config.json
+│   │   └── colors.txt
+│   │
+│   └── assets/
+│
+└── screenshots/
+´´´
 
 ## :play_or_pause_button:How to execute a project
 
-Double click
+´´´
+python main.py
+´´´
 
 ## :hammer_and_wrench:Tech.
 
-- code programing
-- framework
+- Python
+- tkinter
+- Complex Numbers
+- Mathematical Fractal Theory
+
+
 
 ## :warning:Warning.
 
-- limitations.
+- Fractal rendering is computationally expensive.
+- Large definitions (iterations) may significantly increase processing time.
 
 ## Autor
 
