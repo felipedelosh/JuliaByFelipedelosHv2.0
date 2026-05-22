@@ -51,6 +51,31 @@ class MandelbrotGraphierByFelipedelosH:
                 canvas_x2 = canvas_x1 + pixel_size
                 canvas_y2 = canvas_y1 + pixel_size
 
+                if config._data.get("paint_axis"):
+                    tolerance_x = plain_width / plain_pixels_x
+                    tolerance_y = plain_height / plain_pixels_y
+
+                    is_y_axis = abs(x) <= tolerance_x / 2
+                    is_x_axis = abs(y) <= tolerance_y / 2
+
+                    if is_x_axis or is_y_axis:
+                        axis_color = "white"
+
+                        if is_x_axis and is_y_axis:
+                            axis_color = "red"  # origen 0,0
+
+                        canvas.create_rectangle(
+                            canvas_x1,
+                            canvas_y1,
+                            canvas_x2,
+                            canvas_y2,
+                            fill=axis_color,
+                            outline=axis_color,
+                            tags="pixels"
+                        )
+
+                        continue
+
                 if MandelbrotGraphierByFelipedelosH.excludePoint(x, y):
                     continue
 
