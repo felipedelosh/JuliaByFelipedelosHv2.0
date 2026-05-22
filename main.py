@@ -74,6 +74,6 @@ class Software:
             scale_x = self.sliderX.get()
             scale_y = self.sliderY.get()
             zoom = self.sliderZ.get()
-            self.controller.drawMandelbrot(definition, scale_x, scale_y, zoom)
+            self.controller.drawMandelbrot(self.canvas, definition, scale_x, scale_y, zoom)
 
 s = Software()
