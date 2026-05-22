@@ -38,6 +38,7 @@ class Software:
         self.canvas.place(x=0, y=0)
         self.lblBannerProgram.place(x=self._w * 0.45, y=self._h * 0.01)
         # Controls
+        
         self.lblInsertScale.place(x=20, y=20)
         self.txtScale.place(x=20, y=50)
         self.btnCalcular.place(x=200, y=50)
@@ -48,7 +49,7 @@ class Software:
         self.lblZoom.place(x=10, y=220)
         self.sliderZ.place(x=10, y=240)
         # END Controls
-        self.lblFooterProgram.place(x=200, y=450)
+        self.lblFooterProgram.place(x=self._w * 0.5, y=self._h * 0.95)
         self.screem.after(0, self._refreshWindow)
         self.screem.mainloop()
 
