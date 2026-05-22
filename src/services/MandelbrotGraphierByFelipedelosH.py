@@ -21,11 +21,20 @@ class MandelbrotGraphierByFelipedelosH:
         plain_pixels_y = config._data.get("internal_plain_size_y_pixels")
         pixel_size = config._data.get("internal_pixel_size")
 
-        min_x = -2
-        max_x = 1
+        canvas_width = int(canvas["width"])
+        canvas_height = int(canvas["height"])
 
-        min_y = -2
-        max_y = 1.6
+        canvas_center_x = canvas_width / 2
+        canvas_center_y = canvas_height / 2
+
+        plain_center_x = plain_pixels_x / 2
+        plain_center_y = plain_pixels_y / 2
+
+        min_x = -1.5
+        max_x = 1.5
+
+        min_y = -1.8
+        max_y = 1.8
 
         plain_width = max_x - min_x
         plain_height = max_y - min_y
@@ -36,35 +45,35 @@ class MandelbrotGraphierByFelipedelosH:
                 x = min_x + ((i / plain_pixels_x) * plain_width)
                 y = min_y + ((j / plain_pixels_y) * plain_height)
 
-                canvas_x1 = i * pixel_size
-                canvas_y1 = j * pixel_size
+                canvas_x1 = canvas_center_x + ((i - plain_center_x) * pixel_size)
+                canvas_y1 = canvas_center_y + ((j - plain_center_y) * pixel_size)
+
                 canvas_x2 = canvas_x1 + pixel_size
                 canvas_y2 = canvas_y1 + pixel_size
 
                 if MandelbrotGraphierByFelipedelosH.excludePoint(x, y):
                     continue
 
-                if x < 0.5:
-                    level = MandelbrotGraphierByFelipedelosH.levelOfConvergence(
-                        x,
-                        y,
-                        definition
-                    )
+                level = MandelbrotGraphierByFelipedelosH.levelOfConvergence(
+                    x,
+                    y,
+                    definition
+                )
 
-                    color_index = int((level / definition) * (len(colors) - 1))
-                    color_index = max(0, min(color_index, len(colors) - 1))
+                color_index = int((level / definition) * (len(colors) - 1))
+                color_index = max(0, min(color_index, len(colors) - 1))
 
-                    pixel_color = colors[color_index]
+                pixel_color = colors[color_index]
 
-                    canvas.create_rectangle(
-                        canvas_x1,
-                        canvas_y1,
-                        canvas_x2,
-                        canvas_y2,
-                        fill=pixel_color,
-                        outline=pixel_color,
-                        tags="pixels"
-                    )
+                canvas.create_rectangle(
+                    canvas_x1,
+                    canvas_y1,
+                    canvas_x2,
+                    canvas_y2,
+                    fill=pixel_color,
+                    outline=pixel_color,
+                    tags="pixels"
+                )
 
         end_time = time.perf_counter()
 
