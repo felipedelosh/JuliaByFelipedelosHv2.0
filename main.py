@@ -34,7 +34,7 @@ class Software:
         self.screem.geometry(f"{self._w}x{self._h}")
         self.canvas['width'] = self._w
         self.canvas['height'] = self._h
-        self.canvas['bg'] = "snow"
+        self.canvas['bg'] = self.controller.config._data.get("background_color")
         self.canvas.place(x=0, y=0)
         self.lblBannerProgram.place(x=self._w * 0.45, y=self._h * 0.01)
         # Controls
