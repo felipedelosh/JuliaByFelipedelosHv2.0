@@ -10,6 +10,7 @@ class ConfigManager:
     def __init__(self, config_path="config.json"):
         self.config_path = config_path
         self._data = {}
+        self._colors = ""
         self.load()
 
     def load(self):
@@ -18,3 +19,9 @@ class ConfigManager:
                 self._data = json.load(f)
         else:
             self._data = {}
+
+        if os.path.exists("data/colors.txt"):
+            with open("data/colors.txt", "r", encoding="utf-8") as f:
+                self._colors = f.read()
+        else:
+            self._colors = "white\nblack"

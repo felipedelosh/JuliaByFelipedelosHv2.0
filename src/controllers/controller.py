@@ -18,6 +18,7 @@ class Controller:
     def __init__(self) -> None:
         self.path = str(os.path.abspath(os.path.dirname(sys.argv[0])))
         self.config = ConfigManager()
+        print(f"Colors: {len(self.config._colors.splitlines())}")
         pass
 
     def getTextInFile(self, path):
