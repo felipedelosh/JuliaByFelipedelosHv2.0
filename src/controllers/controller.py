@@ -7,6 +7,8 @@ main controller
 import sys
 import os
 from os import scandir
+# SERVICES
+from src.services.MandelbrotGraphierByFelipedelosH import MandelbrotGraphierByFelipedelosH
 
 # INFRAESTRUCTURE
 from src.infraestructure.configManager import ConfigManager
@@ -16,9 +18,6 @@ class Controller:
     def __init__(self) -> None:
         self.path = str(os.path.abspath(os.path.dirname(sys.argv[0])))
         self.config = ConfigManager()
-        print("Gretting from Controller")
-        print(f"MAIN Path: {self.path}")
-        print(f"Config: {self.config._data}")
         pass
 
     def getTextInFile(self, path):
@@ -44,3 +43,6 @@ class Controller:
             return filesNames
         except:
             return None
+
+    def drawMandelbrot(self, scale, scaleX, scaleY, zoom):
+        MandelbrotGraphierByFelipedelosH.drawMandelbrot(scale, scaleX, scaleY, zoom)

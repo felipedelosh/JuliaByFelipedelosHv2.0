@@ -59,18 +59,21 @@ class Software:
     def _refreshWindow(self):
         self.screem.after(60, self._refreshWindow)
 
-    def validateScale(self):
+    def validateDefinition(self):
         try:
-            scale = int(self.txtScale.get())
-            if scale < 1:
+            definition = int(self.txtScale.get())
+            if definition < 1:
                 return False
             return True
         except:
             return False
 
     def calculate(self):
-        if self.validateScale():
-            scale = int(self.txtScale.get())
-            print(f"Calculating with scale: {scale}")
+        if self.validateDefinition():
+            definition = int(self.txtScale.get())
+            scale_x = self.sliderX.get()
+            scale_y = self.sliderY.get()
+            zoom = self.sliderZ.get()
+            self.controller.drawMandelbrot(definition, scale_x, scale_y, zoom)
 
 s = Software()
