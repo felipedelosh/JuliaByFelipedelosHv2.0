@@ -34,7 +34,7 @@ Julia by loko V2.0 renders the Mandelbrot Set using:
 Transforms screen pixels into points inside the complex plane:
 ```
 x = ((i / width) * plane_width) + min_x
-y = ((j / height) * plane_height) + 
+y = ((j / height) * plane_height) + min_y
 ```
 
 ## Mathematical Theory
