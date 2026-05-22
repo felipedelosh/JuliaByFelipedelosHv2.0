@@ -116,3 +116,5 @@ class MandelbrotGraphierByFelipedelosH:
         for limit_x, limit_y in empty_regions:
             if x < limit_x and abs(y) > limit_y:
                 return True
+            
+        return False
