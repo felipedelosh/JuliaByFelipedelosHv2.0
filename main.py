@@ -59,7 +59,18 @@ class Software:
     def _refreshWindow(self):
         self.screem.after(60, self._refreshWindow)
 
+    def validateScale(self):
+        try:
+            scale = int(self.txtScale.get())
+            if scale < 1:
+                return False
+            return True
+        except:
+            return False
+
     def calculate(self):
-        pass
+        if self.validateScale():
+            scale = int(self.txtScale.get())
+            print(f"Calculating with scale: {scale}")
 
 s = Software()
