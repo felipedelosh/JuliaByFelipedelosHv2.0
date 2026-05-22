@@ -16,7 +16,7 @@ class Software:
         self.canvas = Canvas(self.screem)
         self.txtScale = Entry(self.canvas)
         self.lblBannerProgram = Label(self.canvas, text=self.controller.config._data.get("main_banner_text"))
-        self.lblInsertScale = Label(self.canvas, text="Insert a # Scale:")
+        self.lblInsertScale = Label(self.canvas, text="Insert a number of definition:")
         self.btnCalcular = Button(self.canvas, text="Calculate >>", command=self.calculate)
         self.lblScaleX = Label(self.canvas, text="Scale X:")
         self.sliderX = Scale(self.canvas, from_=1, to=100, orient=HORIZONTAL)
@@ -38,16 +38,19 @@ class Software:
         self.canvas.place(x=0, y=0)
         self.lblBannerProgram.place(x=self._w * 0.45, y=self._h * 0.01)
         # Controls
-        
-        self.lblInsertScale.place(x=20, y=20)
-        self.txtScale.place(x=20, y=50)
-        self.btnCalcular.place(x=200, y=50)
-        self.lblScaleX.place(x=10, y=100)
-        self.sliderX.place(x=10, y=120)
-        self.lblScaleY.place(x=10, y=160)
-        self.sliderY.place(x=10, y=180)
-        self.lblZoom.place(x=10, y=220)
-        self.sliderZ.place(x=10, y=240)
+
+        self.lblInsertScale.place(x=self._w * 0.02, y=self._h * 0.06)
+        self.txtScale.place(x=self._w * 0.02, y=self._h * 0.1)
+        self.btnCalcular.place(x=self._w * 0.12, y=self._h * 0.095)
+
+        self.lblScaleX.place(x=self._w * 0.02, y=self._h * 0.15)
+        self.sliderX.place(x=self._w * 0.02, y=self._h * 0.18)
+
+        self.lblScaleY.place(x=self._w * 0.02, y=self._h * 0.25)
+        self.sliderY.place(x=self._w * 0.02, y=self._h * 0.28)
+
+        self.lblZoom.place(x=self._w * 0.02, y=self._h * 0.35)
+        self.sliderZ.place(x=self._w * 0.02, y=self._h * 0.38)
         # END Controls
         self.lblFooterProgram.place(x=self._w * 0.5, y=self._h * 0.95)
         self.screem.after(0, self._refreshWindow)
