@@ -9,15 +9,17 @@ import time
 
 class MandelbrotGraphierByFelipedelosH:
     @staticmethod
-    def drawMandelbrot(canvas: Canvas, colors, definition, scaleX, scaleY, zoom):
+    def drawMandelbrot(canvas: Canvas, colors, definition, scaleX, scaleY, zoom, config):
         start_time = time.perf_counter()
         print("Drawing Mandelbrot...")
         print(f"Definition: {definition} | ScaleX: {scaleX} | ScaleY: {scaleY} | Zoom: {zoom}")
         canvas.delete("pixels")
-        for i in range(1, 420):
-            for j in range(1, 230):
-                x = ((i/420)*(3)) - 2 # [-2, 1]
-                y = ((j/230)*(3.6)) - 2 # [-2, 1.6]
+        _x_plain_pixels = config._data.get("internal_plain_size_x_pixels")
+        _y_plain_pixels = config._data.get("internal_plain_size_y_pixels")
+        for i in range(1, _x_plain_pixels):
+            for j in range(1, _y_plain_pixels):
+                x = ((i/_x_plain_pixels)*(3)) - 2 # [-2, 1]
+                y = ((j/_y_plain_pixels)*(3.6)) - 2 # [-2, 1.6]
 
                 #print(f"Calculating convergence for point ({x}, {y})...")
                 if MandelbrotGraphierByFelipedelosH.excludePoint(x, y):
@@ -57,7 +59,6 @@ class MandelbrotGraphierByFelipedelosH:
             convergence.add(Z)
             
         return len(convergence)
-
     
     @staticmethod
     def excludePoint(x, y):

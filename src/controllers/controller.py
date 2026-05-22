@@ -47,4 +47,4 @@ class Controller:
             return None
 
     def drawMandelbrot(self, canvas, definition, scaleX, scaleY, zoom):
-        MandelbrotGraphierByFelipedelosH.drawMandelbrot(canvas, self.config._colors_arr, definition, scaleX, scaleY, zoom)
+        MandelbrotGraphierByFelipedelosH.drawMandelbrot(canvas, self.config._colors_arr, definition, scaleX, scaleY, zoom, self.config)
