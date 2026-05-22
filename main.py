@@ -13,7 +13,7 @@ class Software:
         self._w = self.controller.config._data.get("window_w")
         self._h = self.controller.config._data.get("window_h")
         self.screem = Tk()
-        self.canvas = Canvas(self.screem)
+        self.canvas = Canvas(self.screem, highlightthickness=0, bd=0)
         self.txtScale = Entry(self.canvas)
         self.lblBannerProgram = Label(self.canvas, text=self.controller.config._data.get("main_banner_text"))
         self.lblInsertScale = Label(self.canvas, text="Insert a number of definition:")
