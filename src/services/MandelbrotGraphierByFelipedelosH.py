@@ -30,11 +30,11 @@ class MandelbrotGraphierByFelipedelosH:
         plain_center_x = plain_pixels_x / 2
         plain_center_y = plain_pixels_y / 2
 
-        min_x = -1.5
-        max_x = 1.5
+        min_x = -2.0
+        max_x = 1.0
 
-        min_y = -1.8
-        max_y = 1.8
+        min_y = -1.3
+        max_y = 1.3
 
         plain_width = max_x - min_x
         plain_height = max_y - min_y
