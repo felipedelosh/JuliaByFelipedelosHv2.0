@@ -4,7 +4,7 @@
     "color_mode": "RGB",
     "window_w": 1280,
     "window_h": 720,
-    "background_color": "snow",
+    "background_color": "black",
     "main_banner_text": "Welcome to Mandelbrot viewer",
     "main_footer_text": "FelipedelosH"
 }

@@ -5,13 +5,14 @@ FelipedelosH
 Using Tkinter.Canvas and Maths Drawing to see a Mandelbrot set.
 """
 from tkinter import Canvas
-import math
+import time
 
 class MandelbrotGraphierByFelipedelosH:
     @staticmethod
-    def drawMandelbrot(canvas, colors, definition, scaleX, scaleY, zoom):
+    def drawMandelbrot(canvas: Canvas, colors, definition, scaleX, scaleY, zoom):
+        start_time = time.perf_counter()
         print("Drawing Mandelbrot...")
-        print(f"Definition: {definition} || ScaleX: {scaleX} | ScaleY: {scaleY} | Zoom: {zoom}")
+        print(f"Definition: {definition} | ScaleX: {scaleX} | ScaleY: {scaleY} | Zoom: {zoom}")
         canvas.delete("pixels")
         for i in range(1, 420):
             for j in range(1, 230):
@@ -28,6 +29,13 @@ class MandelbrotGraphierByFelipedelosH:
                         color_index = int((_levelOfConvergence / definition) * (len(colors) - 1))
                         pixel_color = colors[color_index]
                         canvas.create_rectangle(3+(i*3), 3+(j*3), 6+(i*3), 6+(j*3), fill=pixel_color, tags='pixels') 
+        
+        end_time = time.perf_counter()
+        seconds = end_time - start_time
+        minutes = seconds / 60
+
+        print(f"Time to calcute it in seconds: {seconds:.4f}")
+        print(f"Time to calcute it in minutes: {minutes:.4f}")
 
 
     @staticmethod
