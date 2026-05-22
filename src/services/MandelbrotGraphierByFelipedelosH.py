@@ -21,7 +21,8 @@ class MandelbrotGraphierByFelipedelosH:
 
                 #print(f"Calculating convergence for point ({x}, {y})...")
                 if MandelbrotGraphierByFelipedelosH.excludePoint(x, y):
-                    canvas.create_rectangle(3+(i*3), 3+(j*3), 6+(i*3), 6+(j*3), fill='gray6', tags='pixels')
+                    pass
+                    #canvas.create_rectangle(3+(i*3), 3+(j*3), 6+(i*3), 6+(j*3), fill='gray6', tags='pixels')
                 else:
                     if x < 0.5:
                         _levelOfConvergence = MandelbrotGraphierByFelipedelosH.levelOfConvergence(x, y, definition)
