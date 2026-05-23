@@ -80,6 +80,24 @@ Julia by loko V2.0/
         └── MandelbrotJuliaGraphierByFelipedelosH.py
 ```
 
+## Configuration Table
+
+| Key | Type | Description | Example |
+|------|------|-------------|----------|
+| `title_app` | string | Main application window title. | `"Mandelbrot:Julia v2.0.0"` |
+| `env` | string | Environment name used for development or future deployment modes. | `"DEV"` |
+| `black_and_white_mode` | boolean | Enables black and white rendering mode. If `false`, full color rendering is used. | `true` |
+| `window_w` | integer | Width of the application window in pixels. | `1280` |
+| `window_h` | integer | Height of the application window in pixels. | `720` |
+| `background_color` | string | Background color of the canvas. | `"black"` |
+| `paint_axis` | boolean | Enables mathematical X and Y axis rendering. | `true` |
+| `internal_plain_size_x_pixels` | integer | Internal horizontal rendering resolution used for Mandelbrot calculations. | `400` |
+| `internal_plain_size_y_pixels` | integer | Internal vertical rendering resolution used for Mandelbrot calculations. | `300` |
+| `internal_pixel_size` | integer | Visual size of each rendered pixel block on the canvas. | `2` |
+| `main_banner_text` | string | Text displayed at the top banner of the application. | `"Welcome to Mandelbrot viewer"` |
+| `main_footer_text` | string | Text displayed at the bottom footer of the application. | `"FelipedelosH"` |
+
+
 ## :play_or_pause_button:How to execute a project
 
 ```
@@ -92,8 +110,6 @@ python main.py
 - tkinter
 - Complex Numbers
 - Mathematical Fractal Theory
-
-
 
 ## :warning:Warning.
 
