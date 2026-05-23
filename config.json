@@ -8,7 +8,7 @@
     "paint_axis": true,
     "internal_plain_size_x_pixels": 640,
     "internal_plain_size_y_pixels": 480,
-    "internal_pixel_size": 2,
+    "internal_pixel_size": 1,
     "main_banner_text": "Welcome to Mandelbrot viewer",
     "main_footer_text": "FelipedelosH"
 }
