@@ -96,11 +96,21 @@ class Software:
 
     def calculate(self):
         if self.validateDefinition():
+            # How many calculations to see the Mandelbrot set in a good quality
             definition = int(self.txtScale.get())
+
+            # MOVE IN AIXIS X
             scale_x = self.sliderX.get()
+            slider_min = int(self.sliderX.cget("from"))
+            slider_max = int(self.sliderX.cget("to"))
+            slider_middle = (slider_min + slider_max) / 2
+            slider_range = slider_max - slider_min
+            x_offset = ((scale_x - slider_middle) / slider_range) * self._w
+
+            
             scale_y = self.sliderY.get()
             zoom = self.sliderZ.get()
-            self.controller.drawMandelbrot(self.canvas, definition, scale_x, scale_y, zoom)
+            self.controller.drawMandelbrot(self.canvas, definition, x_offset, scale_y, zoom)
             self.clearControlPanel()
             self.paintControlPanel()
 

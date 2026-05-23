@@ -9,11 +9,11 @@ import time
 
 class MandelbrotJuliaGraphierByFelipedelosH:
     @staticmethod
-    def drawMandelbrotJuliaFullColor(canvas: Canvas, colors, definition, scaleX, scaleY, zoom, config):
+    def drawMandelbrotJuliaFullColor(canvas: Canvas, colors, definition, x_offset, scaleY, zoom, config):
         start_time = time.perf_counter()
 
         print("Drawing Mandelbrot Julia Full Color...")
-        print(f"Definition: {definition} | ScaleX: {scaleX} | ScaleY: {scaleY} | Zoom: {zoom}")
+        print(f"Definition: {definition} | X Offset: {x_offset} | ScaleY: {scaleY} | Zoom: {zoom}")
 
         canvas.delete("pixels")
 
@@ -43,7 +43,7 @@ class MandelbrotJuliaGraphierByFelipedelosH:
                 x = min_x + ((i / plain_pixels_x) * plain_width)
                 y = min_y + ((j / plain_pixels_y) * plain_height)
 
-                canvas_x1 = canvas_center_x + ((i - plain_center_x) * pixel_size)
+                canvas_x1 = canvas_center_x + x_offset + ((i - plain_center_x) * pixel_size)
                 canvas_y1 = canvas_center_y + ((j - plain_center_y) * pixel_size)
                 canvas_x2 = canvas_x1 + pixel_size
                 canvas_y2 = canvas_y1 + pixel_size
@@ -92,11 +92,11 @@ class MandelbrotJuliaGraphierByFelipedelosH:
 
 
     @staticmethod
-    def drawMandelbrotJuliaBlackAndWhite(canvas: Canvas, definition, scaleX, scaleY, zoom, config):
+    def drawMandelbrotJuliaBlackAndWhite(canvas: Canvas, definition, x_offset, scaleY, zoom, config):
         start_time = time.perf_counter()
 
         print("Drawing Mandelbrot Julia Black and White...")
-        print(f"Definition: {definition} | ScaleX: {scaleX} | ScaleY: {scaleY} | Zoom: {zoom}")
+        print(f"Definition: {definition} | X Offset: {x_offset} | ScaleY: {scaleY} | Zoom: {zoom}")
 
         canvas.delete("pixels")
 
@@ -126,7 +126,7 @@ class MandelbrotJuliaGraphierByFelipedelosH:
                 x = min_x + ((i / plain_pixels_x) * plain_width)
                 y = min_y + ((j / plain_pixels_y) * plain_height)
 
-                canvas_x1 = canvas_center_x + ((i - plain_center_x) * pixel_size)
+                canvas_x1 = canvas_center_x + x_offset + ((i - plain_center_x) * pixel_size)
                 canvas_y1 = canvas_center_y + ((j - plain_center_y) * pixel_size)
                 canvas_x2 = canvas_x1 + pixel_size
                 canvas_y2 = canvas_y1 + pixel_size
