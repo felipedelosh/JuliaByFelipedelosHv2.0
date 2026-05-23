@@ -9,7 +9,7 @@ import time
 
 class MandelbrotGraphierByFelipedelosH:
     @staticmethod
-    def drawMandelbrot(canvas: Canvas, colors, definition, scaleX, scaleY, zoom, config):
+    def drawMandelbrotFullColor(canvas: Canvas, colors, definition, scaleX, scaleY, zoom, config):
         start_time = time.perf_counter()
 
         print("Drawing Mandelbrot...")
