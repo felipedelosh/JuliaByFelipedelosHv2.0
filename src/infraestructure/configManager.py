@@ -20,7 +20,7 @@ class ConfigManager:
         else:
             self._data = {}
 
-        if os.path.exists("data/colors.txt"):
+        if os.path.exists("data/colors.txt") and not self._data.get("black_and_white_mode"):
             with open("data/colors.txt", "r", encoding="utf-8") as f:
                 for i in f.read().split('\n'):
                     if str(i).strip() != "":

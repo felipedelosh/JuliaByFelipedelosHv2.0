@@ -1,7 +1,7 @@
 {
     "title_app": "Mandelbrot:Julia v2.0.0",
     "env": "DEV",
-    "black_and_white_mode": false,
+    "black_and_white_mode": true,
     "window_w": 1280,
     "window_h": 720,
     "background_color": "black",
