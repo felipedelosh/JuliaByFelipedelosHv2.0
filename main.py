@@ -41,7 +41,24 @@ class Software:
         self.canvas.place(x=0, y=0)
         self.lblBannerProgram.place(x=self._w * 0.45, y=self._h * 0.01)
         # Controls
-        self.canvas.create_rectangle(self._w * 0.01, self._h * 0.05, self._w * 0.19, self._h * 0.45, fill="green")
+        self.paintControlPanel()
+        # END Controls
+        self.lblFooterProgram.place(x=self._w * 0.5, y=self._h * 0.95)
+        #self.screem.after(0, self._refreshWindow)
+        self.screem.mainloop()
+
+    def _refreshWindow(self):
+        self.screem.after(60, self._refreshWindow)
+
+    def paintControlPanel(self):
+        self.canvas.create_rectangle(
+            self._w * 0.01,
+            self._h * 0.05,
+            self._w * 0.19,
+            self._h * 0.45,
+            fill="green",
+            tags="control_panel"
+        )
 
         self.lblInsertScale.place(x=self._w * 0.02, y=self._h * 0.06)
         self.txtScale.place(x=self._w * 0.02, y=self._h * 0.1)
@@ -55,13 +72,18 @@ class Software:
 
         self.lblZoom.place(x=self._w * 0.02, y=self._h * 0.35)
         self.sliderZ.place(x=self._w * 0.02, y=self._h * 0.38)
-        # END Controls
-        self.lblFooterProgram.place(x=self._w * 0.5, y=self._h * 0.95)
-        #self.screem.after(0, self._refreshWindow)
-        self.screem.mainloop()
 
-    def _refreshWindow(self):
-        self.screem.after(60, self._refreshWindow)
+    def clearControlPanel(self):
+        self.canvas.delete("control_panel")
+        self.lblInsertScale.place_forget()
+        self.txtScale.place_forget()
+        self.btnCalcular.place_forget()
+        self.lblScaleX.place_forget()
+        self.sliderX.place_forget()
+        self.lblScaleY.place_forget()
+        self.sliderY.place_forget()
+        self.lblZoom.place_forget()
+        self.sliderZ.place_forget()
 
     def validateDefinition(self):
         try:
@@ -79,5 +101,7 @@ class Software:
             scale_y = self.sliderY.get()
             zoom = self.sliderZ.get()
             self.controller.drawMandelbrot(self.canvas, definition, scale_x, scale_y, zoom)
+            self.clearControlPanel()
+            self.paintControlPanel()
 
 s = Software()
