@@ -59,26 +59,25 @@ C is the point being evaluated in the complex plane
 Julia by loko V2.0/
 │
 ├── main.py
+├── config.json
 ├── README.md
 ├── requirements.txt
 │
-├── src/
-│   ├── controllers/
-│   │   └── controller.py
-│   │
-│   ├── graphiers/
-│   │   └── MandelbrotGraphierByFelipedelosH.py
-│   │
-│   ├── managers/
-│   │   └── ConfigManager.py
-│   │
-│   ├── config/
-│   │   ├── config.json
-│   │   └── colors.txt
-│   │
-│   └── assets/
+├── data/
+│   └── colors.txt
 │
-└── screenshots/
+├── Docs/
+│   └── banner.png
+│
+└── src/
+    ├── controllers/
+    │   └── controller.py
+    │
+    ├── infraestructure/
+    │   └── configManager.py
+    │
+    └── services/
+        └── MandelbrotJuliaGraphierByFelipedelosH.py
 ```
 
 ## :play_or_pause_button:How to execute a project
