@@ -114,7 +114,7 @@ class MandelbrotGraphierByFelipedelosH:
         """
         FelipedelosH
 
-        Return QTY of convergence levels in:
+        Return QTY of convergence levels in definition value:
         Zo = 0
         Zn = (Zn-1*Zn-1) + C
         """
@@ -127,6 +127,26 @@ class MandelbrotGraphierByFelipedelosH:
             convergence.add(Z)
             
         return len(convergence)
+    
+    @staticmethod
+    def isConvergent(x, y, definition):
+        """
+        Return True if the point does not diverge
+        after N iterations.
+
+        Z0 = 0
+        Zn = (Zn-1 * Zn-1) + C
+        """
+        z = 0
+        c = complex(x, y)
+
+        for _ in range(definition):
+            z = (z * z) + c
+
+            if abs(z) > 2:
+                return False
+
+        return True
     
     @staticmethod
     def excludePoint(x, y):
