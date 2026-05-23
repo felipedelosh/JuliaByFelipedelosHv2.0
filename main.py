@@ -25,7 +25,7 @@ class Software:
         self.sliderY = Scale(self.canvas, from_=1, to=1000, orient=HORIZONTAL)
         self.sliderY.set(500)
         self.lblZoom = Label(self.canvas, text="Zoom:")
-        self.sliderZ = Scale(self.canvas, from_=1, to=10000, orient=HORIZONTAL)
+        self.sliderZ = Scale(self.canvas, from_=1, to=1000, orient=HORIZONTAL)
         self.sliderZ.set(1)
         self.lblFooterProgram = Label(self.canvas, text=self.controller.config._data.get("main_footer_text"))
 
@@ -115,10 +115,11 @@ class Software:
             slider_y_range = slider_y_max - slider_y_min
             y_offset = ((scale_y - slider_y_middle) / slider_y_range) * self._h
 
-
-
+            # ZOOM
             zoom = self.sliderZ.get()
-            self.controller.drawMandelbrot(self.canvas, definition, x_offset, y_offset, zoom)
+            zoom_factor = 1 + ((zoom - 1) * 0.01)
+
+            self.controller.drawMandelbrot(self.canvas, definition, x_offset, y_offset, zoom_factor)
             self.clearControlPanel()
             self.paintControlPanel()
 

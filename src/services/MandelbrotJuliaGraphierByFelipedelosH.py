@@ -9,11 +9,11 @@ import time
 
 class MandelbrotJuliaGraphierByFelipedelosH:
     @staticmethod
-    def drawMandelbrotJuliaFullColor(canvas: Canvas, colors, definition, x_offset, y_offset, zoom, config):
+    def drawMandelbrotJuliaFullColor(canvas: Canvas, colors, definition, x_offset, y_offset, zoom_factor, config):
         start_time = time.perf_counter()
 
         print("Drawing Mandelbrot Julia Full Color...")
-        print(f"Definition: {definition} | X Offset: {x_offset} | Y Offset: {y_offset} | Zoom: {zoom}")
+        print(f"Definition: {definition} | X Offset: {x_offset} | Y Offset: {y_offset} | Zoom: {zoom_factor}")
 
         canvas.delete("pixels")
 
@@ -30,13 +30,26 @@ class MandelbrotJuliaGraphierByFelipedelosH:
         plain_center_x = plain_pixels_x / 2
         plain_center_y = plain_pixels_y / 2
 
-        min_x = -2.0
-        max_x = 1.0
-        min_y = -1.3
-        max_y = 1.3
+        base_min_x = -4.0
+        base_max_x = 3.0
 
-        plain_width = max_x - min_x
-        plain_height = max_y - min_y
+        base_min_y = -2.0
+        base_max_y = 2.0
+
+        base_width = base_max_x - base_min_x
+        base_height = base_max_y - base_min_y
+
+        center_x = (base_min_x + base_max_x) / 2
+        center_y = (base_min_y + base_max_y) / 2
+
+        plain_width = base_width / zoom_factor
+        plain_height = base_height / zoom_factor
+
+        min_x = center_x - (plain_width / 2)
+        max_x = center_x + (plain_width / 2)
+
+        min_y = center_y - (plain_height / 2)
+        max_y = center_y + (plain_height / 2)
 
         for i in range(1, plain_pixels_x):
             for j in range(1, plain_pixels_y):
@@ -92,11 +105,11 @@ class MandelbrotJuliaGraphierByFelipedelosH:
 
 
     @staticmethod
-    def drawMandelbrotJuliaBlackAndWhite(canvas: Canvas, definition, x_offset, y_offset, zoom, config):
+    def drawMandelbrotJuliaBlackAndWhite(canvas: Canvas, definition, x_offset, y_offset, zoom_factor, config):
         start_time = time.perf_counter()
 
         print("Drawing Mandelbrot Julia Black and White...")
-        print(f"Definition: {definition} | X Offset: {x_offset} | Y Offset: {y_offset} | Zoom: {zoom}")
+        print(f"Definition: {definition} | X Offset: {x_offset} | Y Offset: {y_offset} | Zoom: {zoom_factor}")
 
         canvas.delete("pixels")
 
@@ -113,13 +126,26 @@ class MandelbrotJuliaGraphierByFelipedelosH:
         plain_center_x = plain_pixels_x / 2
         plain_center_y = plain_pixels_y / 2
 
-        min_x = -2.0
-        max_x = 1.0
-        min_y = -1.3
-        max_y = 1.3
+        base_min_x = -4.0
+        base_max_x = 3.0
 
-        plain_width = max_x - min_x
-        plain_height = max_y - min_y
+        base_min_y = -2.0
+        base_max_y = 2.0
+
+        base_width = base_max_x - base_min_x
+        base_height = base_max_y - base_min_y
+
+        center_x = (base_min_x + base_max_x) / 2
+        center_y = (base_min_y + base_max_y) / 2
+
+        plain_width = base_width / zoom_factor
+        plain_height = base_height / zoom_factor
+
+        min_x = center_x - (plain_width / 2)
+        max_x = center_x + (plain_width / 2)
+
+        min_y = center_y - (plain_height / 2)
+        max_y = center_y + (plain_height / 2)
 
         for i in range(1, plain_pixels_x):
             for j in range(1, plain_pixels_y):
