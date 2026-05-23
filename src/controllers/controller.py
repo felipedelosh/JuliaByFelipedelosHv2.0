@@ -46,10 +46,10 @@ class Controller:
         except:
             return None
 
-    def drawMandelbrot(self, canvas, definition, x_offset, scaleY, zoom):
+    def drawMandelbrot(self, canvas, definition, x_offset, y_offset, zoom):
         if self.config._data.get("black_and_white_mode"):
             print("Drawing mandelbrot in black and white mode...")
-            MandelbrotJuliaGraphierByFelipedelosH.drawMandelbrotJuliaBlackAndWhite(canvas, definition, x_offset, scaleY, zoom, self.config)
+            MandelbrotJuliaGraphierByFelipedelosH.drawMandelbrotJuliaBlackAndWhite(canvas, definition, x_offset, y_offset, zoom, self.config)
         else:
             print("Drawing mandelbrot in color mode...")
-            MandelbrotJuliaGraphierByFelipedelosH.drawMandelbrotJuliaFullColor(canvas, self.config._colors_arr, definition, x_offset, scaleY, zoom, self.config)
+            MandelbrotJuliaGraphierByFelipedelosH.drawMandelbrotJuliaFullColor(canvas, self.config._colors_arr, definition, x_offset, y_offset, zoom, self.config)

@@ -107,10 +107,18 @@ class Software:
             slider_range = slider_max - slider_min
             x_offset = ((scale_x - slider_middle) / slider_range) * self._w
 
-            
+            # MOVE IN AIXIS Y
             scale_y = self.sliderY.get()
+            slider_y_min = int(self.sliderY.cget("from"))
+            slider_y_max = int(self.sliderY.cget("to"))
+            slider_y_middle = (slider_y_min + slider_y_max) / 2
+            slider_y_range = slider_y_max - slider_y_min
+            y_offset = ((scale_y - slider_y_middle) / slider_y_range) * self._h
+
+
+
             zoom = self.sliderZ.get()
-            self.controller.drawMandelbrot(self.canvas, definition, x_offset, scale_y, zoom)
+            self.controller.drawMandelbrot(self.canvas, definition, x_offset, y_offset, zoom)
             self.clearControlPanel()
             self.paintControlPanel()
 
