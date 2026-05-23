@@ -8,7 +8,7 @@ import sys
 import os
 from os import scandir
 # SERVICES
-from src.services.MandelbrotGraphierByFelipedelosH import MandelbrotGraphierByFelipedelosH
+from src.services.MandelbrotJuliaGraphierByFelipedelosH import MandelbrotJuliaGraphierByFelipedelosH
 
 # INFRAESTRUCTURE
 from src.infraestructure.configManager import ConfigManager
@@ -47,4 +47,9 @@ class Controller:
             return None
 
     def drawMandelbrot(self, canvas, definition, scaleX, scaleY, zoom):
-        MandelbrotGraphierByFelipedelosH.drawMandelbrotFullColor(canvas, self.config._colors_arr, definition, scaleX, scaleY, zoom, self.config)
+        if self.config._data.get("black_and_white_mode"):
+            print("Drawing mandelbrot in black and white mode...")
+            MandelbrotJuliaGraphierByFelipedelosH.drawMandelbrotJuliaBlackAndWhite(canvas, definition, scaleX, scaleY, zoom, self.config)
+        else:
+            print("Drawing mandelbrot in color mode...")
+            MandelbrotJuliaGraphierByFelipedelosH.drawMandelbrotJuliaFullColor(canvas, self.config._colors_arr, definition, scaleX, scaleY, zoom, self.config)
