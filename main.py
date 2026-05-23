@@ -25,8 +25,8 @@ class Software:
         self.sliderY = Scale(self.canvas, from_=1, to=1000, orient=HORIZONTAL)
         self.sliderY.set(500)
         self.lblZoom = Label(self.canvas, text="Zoom:")
-        self.sliderZ = Scale(self.canvas, from_=1, to=1000, orient=HORIZONTAL)
-        self.sliderZ.set(500)
+        self.sliderZ = Scale(self.canvas, from_=1, to=10000, orient=HORIZONTAL)
+        self.sliderZ.set(1)
         self.lblFooterProgram = Label(self.canvas, text=self.controller.config._data.get("main_footer_text"))
 
         self.vizualizedAndRun()
