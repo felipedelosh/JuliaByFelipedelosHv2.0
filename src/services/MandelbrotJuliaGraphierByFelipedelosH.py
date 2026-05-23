@@ -61,22 +61,6 @@ class MandelbrotJuliaGraphierByFelipedelosH:
                 canvas_x2 = canvas_x1 + pixel_size
                 canvas_y2 = canvas_y1 + pixel_size
 
-                if MandelbrotJuliaGraphierByFelipedelosH.paintAxisIfEnabled(
-                    canvas,
-                    config,
-                    x,
-                    y,
-                    plain_width,
-                    plain_height,
-                    plain_pixels_x,
-                    plain_pixels_y,
-                    canvas_x1,
-                    canvas_y1,
-                    canvas_x2,
-                    canvas_y2
-                ):
-                    continue
-
                 if MandelbrotJuliaGraphierByFelipedelosH.excludePoint(x, y):
                     continue
 
@@ -102,6 +86,21 @@ class MandelbrotJuliaGraphierByFelipedelosH:
                 )
 
         MandelbrotJuliaGraphierByFelipedelosH.printExecutionTime(start_time)
+        MandelbrotJuliaGraphierByFelipedelosH.paintAxis(
+            canvas,
+            config,
+            min_x,
+            max_x,
+            min_y,
+            max_y,
+            canvas_center_x,
+            canvas_center_y,
+            x_offset,
+            y_offset,
+            plain_pixels_x,
+            plain_pixels_y,
+            pixel_size
+        )
 
 
     @staticmethod
@@ -157,22 +156,6 @@ class MandelbrotJuliaGraphierByFelipedelosH:
                 canvas_x2 = canvas_x1 + pixel_size
                 canvas_y2 = canvas_y1 + pixel_size
 
-                if MandelbrotJuliaGraphierByFelipedelosH.paintAxisIfEnabled(
-                    canvas,
-                    config,
-                    x,
-                    y,
-                    plain_width,
-                    plain_height,
-                    plain_pixels_x,
-                    plain_pixels_y,
-                    canvas_x1,
-                    canvas_y1,
-                    canvas_x2,
-                    canvas_y2
-                ):
-                    continue
-
                 if MandelbrotJuliaGraphierByFelipedelosH.excludePoint(x, y):
                     continue
 
@@ -195,50 +178,82 @@ class MandelbrotJuliaGraphierByFelipedelosH:
                 )
 
         MandelbrotJuliaGraphierByFelipedelosH.printExecutionTime(start_time)
+        MandelbrotJuliaGraphierByFelipedelosH.paintAxis(
+            canvas,
+            config,
+            min_x,
+            max_x,
+            min_y,
+            max_y,
+            canvas_center_x,
+            canvas_center_y,
+            x_offset,
+            y_offset,
+            plain_pixels_x,
+            plain_pixels_y,
+            pixel_size
+        )
 
     @staticmethod
-    def paintAxisIfEnabled(
+    def paintAxis(
         canvas,
         config,
-        x,
-        y,
-        plain_width,
-        plain_height,
+        min_x,
+        max_x,
+        min_y,
+        max_y,
+        canvas_center_x,
+        canvas_center_y,
+        x_offset,
+        y_offset,
         plain_pixels_x,
         plain_pixels_y,
-        canvas_x1,
-        canvas_y1,
-        canvas_x2,
-        canvas_y2
+        pixel_size
     ):
         if not config._data.get("paint_axis"):
-            return False
+            return
 
-        tolerance_x = plain_width / plain_pixels_x
-        tolerance_y = plain_height / plain_pixels_y
+        render_width = plain_pixels_x * pixel_size
+        render_height = plain_pixels_y * pixel_size
 
-        is_y_axis = abs(x) <= tolerance_x / 2
-        is_x_axis = abs(y) <= tolerance_y / 2
+        render_x0 = canvas_center_x + x_offset - (render_width / 2)
+        render_y0 = canvas_center_y + y_offset - (render_height / 2)
 
-        if not is_x_axis and not is_y_axis:
-            return False
+        # Position of mathematical x = 0
+        axis_y_x = render_x0 + ((0 - min_x) / (max_x - min_x)) * render_width
 
-        axis_color = "white"
+        # Position of mathematical y = 0
+        axis_x_y = render_y0 + ((0 - min_y) / (max_y - min_y)) * render_height
 
-        if is_x_axis and is_y_axis:
-            axis_color = "red"
-
-        canvas.create_rectangle(
-            canvas_x1,
-            canvas_y1,
-            canvas_x2,
-            canvas_y2,
-            fill=axis_color,
-            outline=axis_color,
+        canvas.create_line(
+            axis_y_x,
+            render_y0,
+            axis_y_x,
+            render_y0 + render_height,
+            fill="white",
+            width=1,
             tags="pixels"
         )
 
-        return True
+        canvas.create_line(
+            render_x0,
+            axis_x_y,
+            render_x0 + render_width,
+            axis_x_y,
+            fill="white",
+            width=1,
+            tags="pixels"
+        )
+
+        canvas.create_oval(
+            axis_y_x - 2,
+            axis_x_y - 2,
+            axis_y_x + 2,
+            axis_x_y + 2,
+            fill="red",
+            outline="red",
+            tags="pixels"
+        )
 
 
     @staticmethod
